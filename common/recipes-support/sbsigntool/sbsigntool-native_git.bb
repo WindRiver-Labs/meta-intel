@@ -23,7 +23,7 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git;pr
            git://github.com/rustyrussell/ccan.git;protocol=https;destsuffix=git/lib/ccan.git;name=ccan \
           "
 
-SRCREV_sbsigntools  ?= "efbb550858e7bd3f43e64228d22aea440ef6a14d"
+SRCREV_sbsigntools  ?= "df8303a4e37e42cce36d8ef7d4ea4d75b1080e28"
 SRCREV_ccan         ?= "b1f28e17227f2320d07fe052a8a48942fe17caa5"
 SRCREV_FORMAT       =  "sbsigntools_ccan"
 
