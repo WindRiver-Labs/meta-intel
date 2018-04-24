@@ -35,6 +35,12 @@ S = "${WORKDIR}/git"
 
 inherit native autotools pkgconfig
 
+do_compile_prepend() {
+	echo "========== dumping configure log ==========="
+	cat ${WORKDIR}/temp/log.do_configure
+	echo "============================================"
+}
+
 do_configure_prepend() {
 	cd ${S}
 
