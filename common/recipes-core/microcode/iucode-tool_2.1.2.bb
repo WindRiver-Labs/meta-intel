@@ -18,16 +18,28 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
 
 DEPENDS_append_libc-musl = " argp-standalone"
 
-SRC_URI = "https://gitlab.com/iucode-tool/releases/raw/master/iucode-tool_${PV}.tar.xz"
+SRC_URI = "https://gitlab.com/iucode-tool/releases/raw/master/iucode-tool_${PV}.tar.xz \
+           file://iucode-tool.service \
+"
 SRC_URI_append_libc-musl = " file://0001-Makefile.am-Add-arg-parse-library-for-MUSL-support.patch"
 
 SRC_URI[md5sum] = "c6f131a0b69443f5498782a2335973fa"
 SRC_URI[sha256sum] = "01f1c02ba6935e0ac8440fb594c2ef57ce4437fcbce539e3ef329f55a6fd71ab"
 
-inherit autotools
+inherit autotools systemd
 
 BBCLASSEXTEND = "native"
 
 COMPATIBLE_HOST = "(i.86|x86_64).*-linux"
 
 UPSTREAM_CHECK_URI = "https://gitlab.com/iucode-tool/releases"
+
+SYSTEMD_SERVICE_${PN} = "iucode-tool.service"
+SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+
+do_install_append() {
+	install -d ${D}${systemd_unitdir}/system
+	install -m 0644 ${WORKDIR}/iucode-tool.service ${D}${systemd_unitdir}/system
+	sed -i -e 's,@SBINDIR@,${sbindir},g' ${D}${systemd_unitdir}/system/iucode-tool.service
+	sed -i -e 's,@LIB@,${base_libdir},g' ${D}${systemd_unitdir}/system/iucode-tool.service
+}

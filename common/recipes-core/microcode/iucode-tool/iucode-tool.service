@@ -1,0 +1,11 @@
+[Unit]
+Description=Apply Cpu Microcode
+
+[Service]
+Type=forking
+KillMode=process
+RemainAfterExit=yes
+ExecStart=@SBINDIR@/iucode_tool -k @LIB@/firmware/intel-ucode/microcode.bin
+
+[Install]
+WantedBy=multi-user.target
