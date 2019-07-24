@@ -35,3 +35,11 @@ TOOLCHAIN_class-native = "clang"
 BBCLASSEXTEND = "native nativesdk"
 
 UPSTREAM_CHECK_GITTAGREGEX = "^igc-(?P<pver>(?!19\..*)\d+(\.\d+)+)$"
+
+python __anonymous() {
+    toolchain = d.getVar('TOOLCHAIN')
+    if toolchain != "clang" or 'clang-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
+        msg = "Add 'TOOLCHAIN = \"clang\"' in local.conf\n"
+        msg += "And meta-clang should be present"
+        raise bb.parse.SkipRecipe(msg)
+}
