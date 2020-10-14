@@ -13,7 +13,7 @@ DESCRIPTION = "The microcode data file contains the latest microcode\
 LICENSE = "Intel-Microcode-License"
 LIC_FILES_CHKSUM = "file://license;md5=99b296eb12723fd1eeb52e24971eed84"
 
-SRC_URI = "git://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files.git;protocol=https \
+SRC_URI = "git://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files.git;protocol=https;branch=main \
            "
 
 SRCREV = "5ada2f32ed7d216e38823f1320358e4679941990"
