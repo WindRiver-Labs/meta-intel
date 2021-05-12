@@ -40,7 +40,7 @@ EXTRA_OECMAKE += " \
                   -DENABLE_GNA=0 \
                   -DPYTHON_EXECUTABLE=${PYTHON} \
                   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-                  -DTHREADING=TBB -DTBB_DIR=${STAGING_LIBDIR}/cmake/TBB \
+                  -DTHREADING=TBB -DTBB_DIR=${S}/cmake/developer_package/tbb/lnx \
                   -DENABLE_SAMPLES=1 \
                   -DIE_CPACK_IE_DIR=${prefix} \
                   -DNGRAPH_UNIT_TEST_ENABLE=FALSE \
