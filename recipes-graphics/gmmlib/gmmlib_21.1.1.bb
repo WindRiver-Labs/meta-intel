@@ -14,6 +14,7 @@ SRCREV = "60a77187c43ff23a0888b2f297ae5c93cc50a666"
 
 S = "${WORKDIR}/git"
 
+COMPATIBLE_HOST = '(x86_64).*-linux'
 COMPATIBLE_HOST_x86-x32 = "null"
 
 UPSTREAM_CHECK_GITTAGREGEX = "^intel-gmmlib-(?P<pver>(\d+(\.\d+)+))$"
