@@ -44,7 +44,7 @@ FILES_${PN} += " \
                  ${libdir}/igc/NOTICES.txt \
                  "
 python __anonymous() {
-    if 'clang-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
-        msg = "meta-clang should be present"
+    if d.getVar('LLVMVERSION') != "12.0.0" or 'clang-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
+        msg = "wrong llvm version or meta-clang should be present"
         raise bb.parse.SkipRecipe(msg)
 }
