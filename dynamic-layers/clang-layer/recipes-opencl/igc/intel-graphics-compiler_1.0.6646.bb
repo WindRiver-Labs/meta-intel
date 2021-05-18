@@ -26,6 +26,8 @@ S = "${WORKDIR}/git"
 
 inherit cmake
 
+OVERRIDES .= ":clang-llvm"
+
 COMPATIBLE_HOST = '(x86_64).*-linux'
 COMPATIBLE_HOST_libc-musl = "null"
 
@@ -44,7 +46,7 @@ FILES_${PN} += " \
                  ${libdir}/igc/NOTICES.txt \
                  "
 python __anonymous() {
-    if d.getVar('LLVMVERSION') != "12.0.0" or 'clang-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
-        msg = "wrong llvm version or meta-clang should be present"
+    if 'clang-layer' not in d.getVar('BBFILE_COLLECTIONS').split():
+        msg = "meta-clang should be present"
         raise bb.parse.SkipRecipe(msg)
 }
